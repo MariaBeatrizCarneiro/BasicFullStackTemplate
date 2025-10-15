@@ -6,10 +6,7 @@
     "dev": "nodemon server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "server": "nodemon server.js",
-    "migrate": "node migrate.js",
-    "seed": "node seed.js",
-    "clear": "node clear.js"
+    "server": "nodemon server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

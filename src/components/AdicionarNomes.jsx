@@ -1,18 +1,8 @@
-import { useState, useEffect } from 'react';
-import { carregarNomesAPI, adicionarNomeAPI } from '../services/api';
+import { useState } from 'react';
+import { adicionarNomeAPI } from '../services/api';
 
 export default function AdicionarNomes() {
-  const [nomes, setNomes] = useState([]);
   const [novoNome, setNovoNome] = useState('');
-
-  async function carregarNomes() {
-    try {
-      const data = await carregarNomesAPI();
-      setNomes(data);
-    } catch (error) {
-      console.error('Erro ao carregar nomes:', error);
-    }
-  }
 
   async function adicionarNome(e) {
     e.preventDefault();
@@ -20,15 +10,10 @@ export default function AdicionarNomes() {
     try {
       await adicionarNomeAPI(novoNome);
       setNovoNome('');
-      await carregarNomes();
     } catch (error) {
       console.error('Erro ao adicionar nome:', error);
     }
   }
-
-  useEffect(() => {
-    carregarNomes();
-  }, []);
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 min-w-72 h-fit">
@@ -46,12 +31,6 @@ export default function AdicionarNomes() {
           Adicionar
         </button>
       </form>
-
-      <div>
-        {nomes.map((nome) => (
-          <div key={nome._id}>{nome.nome}</div>
-        ))}
-      </div>
     </div>
   );
 }
