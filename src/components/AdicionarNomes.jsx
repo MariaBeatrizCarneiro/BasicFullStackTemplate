@@ -4,8 +4,7 @@ import { adicionarNomeAPI } from '../services/api';
 export default function AdicionarNomes() {
   const [novoNome, setNovoNome] = useState('');
 
-  async function adicionarNome(e) {
-    e.preventDefault();
+  async function adicionarNome() {
     if (!novoNome) return;
     try {
       await adicionarNomeAPI(novoNome);

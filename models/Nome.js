@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const nomeSchema = new mongoose.Schema({
-  nome: { type: String, required: true }
+  nome: { type: String, required: true },
 }, {
   versionKey: false
 });
